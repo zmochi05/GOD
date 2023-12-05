@@ -1,0 +1,1436 @@
+                                                                              ***UNIT-1***ANGULARJS***
+ ###ANGULAR CHECK BOX###
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myapp" ng-controller="ctrl">
+  <form>
+    Check to show a header:
+    Male<input type="checkbox" ng-model="selected" ng-true-value="'male'" ng-checked="selected=='male'">
+     Female<input type="checkbox" ng-model="selected" ng-true-value="'Female'" ng-checked="selected=='Female'">
+      XML<input type="checkbox" ng-model="selected" ng-true-value="'XML'" ng-checked="selected=='XML">
+  </form>
+  <h1>{{selected}}</h1>
+</div>
+<script>
+app=angular.module("myapp",[]);
+app.controller("ctrl",function($scope){
+$scope.selected="other";
+});
+</script>
+
+
+</body>
+</html>
+
+                                                                                   ###ANGULAR FIRST###
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="Myapp" ng-controller="Myctrl">
+<div>
+First Number:{{4+4}}
+Name:-<input type="text" ng-model="name"/>
+<h1 ng-bind="name"></h1>
+</div>
+<div>
+Second Number:{{3+4}}
+<p>The variables:{{{name:"David",age:"34"}.name}}</p>
+Array{{['Car','Male'][1]}}
+</div>
+<script>
+var app=angular.module('Myapp',[]);
+app.controller("Myctrl",function($scope){
+$scope.name="Suraj"
+});
+</script>
+</body>
+</html>
+
+
+   ####ANGULAR JS INCOME TAX CALCULATOR####
+
+<!DOCTYPE html>
+<html lang="en" ng-app="incomeTaxApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="incomeTaxController">
+
+    <h2>Income Tax Calculator</h2>
+
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" ng-model="employeeName" />
+
+    <label for="grossIncome">Gross Total Income:</label>
+    <input type="number" id="grossIncome" ng-model="grossIncome" />
+
+    <label for="deduction">Deduction (Investments):</label>
+    <input type="number" id="deduction" ng-model="deduction" />
+
+    <button ng-click="calculateTax()">Calculate Tax</button>
+
+    <div ng-show="taxCalculated">
+        <h3>Tax Calculation Result</h3>
+        <p>Employee Name: {{ employeeName }}</p>
+        <p>Gross Total Income: {{ grossIncome }}</p>
+        <p>Deduction (Investments): {{ deduction }}</p>
+        <p>Tax Payable: {{ taxPayable }}</p>
+    </div>
+
+    <script>
+        var app = angular.module('incomeTaxApp', []);
+
+        app.factory('taxService', function () {
+            var factory = {};
+
+            factory.calculateTax = function (grossIncome, deduction) {
+                // Standard deduction
+                var standardDeduction = 50000;
+
+                // Net taxable income
+                var netTaxableIncome = grossIncome - (deduction + standardDeduction);
+
+                // Tax slabs
+                var slabs = [
+                    { min: 0, max: 250000, rate: 0 },
+                    { min: 250001, max: 500000, rate: 0.05 },
+                    { min: 500001, max: 1000000, rate: 0.2 },
+                    { min: 1000001, max: Infinity, rate: 0.3 }
+                ];
+
+                // Calculate tax based on slabs
+                var taxPayable = 0;
+                var remainingIncome = netTaxableIncome;
+
+                for (var i = 0; i < slabs.length; i++) {
+                    var slab = slabs[i];
+                    var taxableAmountInSlab = Math.min(remainingIncome, slab.max - slab.min + 1);
+
+                    taxPayable += taxableAmountInSlab * slab.rate;
+                    remainingIncome -= taxableAmountInSlab;
+
+                    if (remainingIncome <= 0) {
+                        break;
+                    }
+                }
+
+                return taxPayable;
+            };
+
+            return factory;
+        });
+
+        app.controller('incomeTaxController', function ($scope, taxService) {
+            $scope.employeeName = '';
+            $scope.grossIncome = 0;
+            $scope.deduction = 0;
+            $scope.taxPayable = 0;
+            $scope.taxCalculated = false;
+
+            $scope.calculateTax = function () {
+                $scope.taxPayable = taxService.calculateTax($scope.grossIncome, $scope.deduction);
+                $scope.taxCalculated = true;
+            };
+        });
+    </script>
+
+</body>
+
+</html>
+
+           ###EXP-1=>FORM VALIDATION###
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <script>
+    function validateForm() {
+      var userId = document.getElementById("userId").value;
+      var password = document.getElementById("password").value;
+      var email = document.getElementById("email").value;
+      var phoneNumber = document.getElementById("phoneNumber").value;
+
+      if (userId.charAt(0) !== 'A') {
+        alert("User ID should start with 'A'");
+        return false;
+      }
+
+      if (!password.match(/^[0-9a-zA-Z]+$/)) {
+        alert("Password should be alphanumeric");
+        return false;
+      }
+
+      if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+
+      if (!phoneNumber.match(/^\d{10}$/)) {
+        alert("Please enter a valid 10-digit phone number");
+        return false;
+      }
+
+      // If all validations pass, the form is considered valid
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
+ ###EXP-2=>angular JS code to change the background color of text box ###
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <input type="text" ng-style="textBoxStyle" ng-model="inputText" ng-change="changeBackgroundColor()">
+    </div>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('myController', function ($scope) {
+                $scope.textBoxStyle = {};
+
+                $scope.changeBackgroundColor = function () {
+                    // Set the background color based on the inputText value
+                    $scope.textBoxStyle.backgroundColor = $scope.inputText;
+                };
+            });
+    </script>
+</body>
+</html>
+
+ 
+   ###EXP-2=>angulAR JS Angular JS Application to designed Navigation MeNu ###
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Navigation Menu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        /* Add your necessary CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        li {
+            flex-grow: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        li:hover {
+            background-color: #555;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body ng-controller="myController">
+
+    <ul>
+        <li ng-click="displayMenu('Home')">Home</li>
+        <li ng-click="displayMenu('About')">About</li>
+        <li ng-click="displayMenu('Services')">Services</li>
+        <li ng-click="displayMenu('Contact')">Contact</li>
+    </ul>
+
+    <p>{{ selectedMenu }}</p>
+
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('myController', function ($scope) {
+            $scope.selectedMenu = '';
+
+            $scope.displayMenu = function (menuName) {
+                $scope.selectedMenu = 'Selected Menu: ' + menuName;
+            };
+        });
+    </script>
+</body>
+
+</html>
+
+                                                                ###EXP-2=>angulAR JS angular JS code to implement one way data binding ###
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="" ng-init="gameName=''">
+    <p>Type your favourite game in the given area:</p>
+    <p>Game Name: <input type="text" ng-model="gameName"></p>
+    <p>Your favourite game is: {{ gameName }}</p>
+</div>
+
+</body>
+</html>
+
+                                                                             ###EXP-3=>Shopping Cart application###    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment-3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="ShoppingCart" ng-controller="ctrl" style="width: 200px; height: 200px; border: 1px solid red; border-radius: 5px;">
+        <ul style="list-style-type: none;">
+            <li ng-repeat="item in products">{{ item }}
+                <span ng-click="remove($index)">X</span>
+            </li>
+        </ul>
+        <input type="text" ng-model="addMe">
+        <input type="button" ng-click="add()" value="ADD">
+    </div>
+    <script>
+        var app = angular.module("ShoppingCart", []);
+        app.controller("ctrl", function($scope) {
+            $scope.products = ["Tea", "Milk", "CD", "Pen"];
+
+            $scope.remove = function(index) {
+                $scope.products.splice(index, 1);
+            };
+
+            $scope.add = function() {
+                if ($scope.addMe) {
+                    $scope.products.push($scope.addMe);
+                    $scope.addMe = ""; // Clear the input field after adding
+                }
+            };
+        });
+    </script>
+</body>
+</html>
+
+                                             ###EXP-3=>AngularJS ng-click directive, whenever user clicks on the button, the count of courses selected is updated###    
+
+<!DOCTYPE html>
+<html lang="en" ng-app="courseApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selection</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="courseController">
+
+    <h2>Available Courses</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="course in courses">
+                <td>{{ course.id }}</td>
+                <td>{{ course.name }}</td>
+                <td>
+                    <button ng-click="selectCourse(course)">Select</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Selected Courses: {{ selectedCourses.length }}</h3>
+
+    <script>
+        var app = angular.module('courseApp', []);
+
+        app.controller('courseController', function ($scope) {
+            $scope.courses = [
+                { id: 1, name: 'Mathematics' },
+                { id: 2, name: 'Physics' },
+                { id: 3, name: 'Chemistry' },
+                { id: 4, name: 'Biology' },
+                { id: 5, name: 'Computer Science' }
+            ];
+
+            $scope.selectedCourses = [];
+
+            $scope.selectCourse = function (course) {
+                // Check if the course is already selected
+                var index = $scope.selectedCourses.indexOf(course);
+
+                if (index === -1) {
+                    // Course not selected, add it to the list
+                    $scope.selectedCourses.push(course);
+                } else {
+                    // Course already selected, remove it from the list
+                    $scope.selectedCourses.splice(index, 1);
+                }
+            };
+        });
+    </script>
+
+</body>
+
+</html>
+
+                                               ###EXP-4=>The angular JS application should have both state control and CSS validation at both form and input control level###  
+
+
+<!DOCTYPE html>
+<html lang="en" ng-app="studentApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+    <!-- Include AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Include custom CSS for styling -->
+    <style>
+        .error-message {
+            color: red;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .ng-invalid {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body ng-controller="StudentController">
+
+    <h2>Student Registration Form</h2>
+
+    <form name="studentForm" novalidate>
+
+        <!-- Required Field -->
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" ng-model="student.firstName" required>
+            <span class="error-message" ng-show="studentForm.firstName.$error.required">First Name is required</span>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" ng-model="student.lastName" required>
+            <span class="error-message" ng-show="studentForm.lastName.$error.required">Last Name is required</span>
+        </div>
+
+        <!-- Range Validator -->
+        <div class="form-group">
+            <label for="marks">Marks:</label>
+            <input type="number" id="marks" name="marks" ng-model="student.marks" ng-min="0" ng-max="100" required>
+            <span class="error-message" ng-show="studentForm.marks.$error.min || studentForm.marks.$error.max">Marks must be between 0 and 100</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" ng-model="student.email" required>
+            <span class="error-message" ng-show="studentForm.email.$error.email">Invalid email format</span>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" ng-model="student.phone" pattern="[0-9]{10}" required>
+            <span class="error-message" ng-show="studentForm.phone.$error.pattern">Phone must be 10 digits</span>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" ng-model="student.age" ng-min="0" ng-max="150" required>
+            <span class="error-message" ng-show="studentForm.age.$error.min || studentForm.age.$error.max">Age must be between 0 and 150</span>
+        </div>
+
+        <!-- Pincode -->
+        <div class="form-group">
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" name="pincode" ng-model="student.pincode" pattern="[0-9]{6}" required>
+            <span class="error-message" ng-show="studentForm.pincode.$error.pattern">Pincode must be 6 digits</span>
+        </div>
+
+        <button type="button" ng-click="submitForm()">Submit</button>
+
+    </form>
+
+    <script>
+        var app = angular.module('studentApp', []);
+
+        app.controller('StudentController', function ($scope) {
+            $scope.student = {};
+
+            $scope.submitForm = function () {
+                // Implement form submission logic here
+                if ($scope.studentForm.$valid) {
+                    console.log("Form submitted successfully");
+                } else {
+                    console.log("Form contains errors");
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>
+
+                                                                        
+                                                   ###EXP-5=>custom service using factory to allow user to accept two numbers and performed mathematical operation.###  
+
+<html>
+<head>
+  <title>Form Validation</title>
+  <script>
+    function validateForm() {
+      var userId = document.getElementById("userId").value;
+      var password = document.getElementById("password").value;
+      var email = document.getElementById("email").value;
+      var phoneNumber = document.getElementById("phoneNumber").value;
+
+      if (userId.charAt(0) !== 'A') {
+        alert("User ID should start with 'A'");
+        return false;
+      }
+
+      if (!password.match(/^[0-9a-zA-Z]+$/)) {
+        alert("Password should be alphanumeric");
+        return false;
+      }
+
+      if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+
+      if (!phoneNumber.match(/^\d{10}$/)) {
+        alert("Please enter a valid 10-digit phone number");
+        return false;
+      }
+
+      // If all validations pass, the form is considered valid
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+                                                   ###EXP-5=>Angular JS application which demonstrate the use of $http service with get method ###  
+
+
+<html lang="en" ng-app="demoApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP GET Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<!-- Code injected by live-server -->
+<script>
+
+     
+                                                                              <---------UNIT-2-------> 
+
+                                                                                    ###JSON_PHP###
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Get JSON Data from a PHP Server</h2>
+<p>Convert the data into a JavaScript array:</p>
+<p id="demo"></p>
+
+<script>
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("demo").innerHTML = myObj[2];
+}
+xmlhttp.open("GET", "demo_array.php");
+xmlhttp.send();
+</script>
+
+</body>
+</html>
+
+###MYJSON_NP###
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h2>Click the Button.</h2>
+<p>A script tag with a src attribute is created and placed in the document.</p>
+<p>The PHP file returns a call to a function with the JSON object as a parameter.</p>
+
+<button onclick="clickButton()">Click me!</button>
+
+<p id="demo"></p>
+
+<script>
+function clickButton() {
+  let s = document.createElement("script");
+  s.src = "server_json.php";
+  document.body.appendChild(s);
+}
+
+function MyFunc(myObj) {
+alert();
+  document.getElementById("demo").innerHTML = myObj.name;
+}
+</script>
+
+</body>
+</html>
+
+                                                                                         ###PHP_MAIN###
+
+<?php
+$myJSON = '{ "name":"John", "age":30, "city":"New York" }';
+
+echo "myFunc(".$myJSON.");";
+?>
+
+2## <?php
+$myArr = array("John", "Mary", "Peter", "Sally");
+
+$myJSON = json_encode($myArr);
+
+echo $myJSON;
+?>
+
+                                                                                      ***UNIT-3***AJAX***
+
+                                                                                ###CUSTOMER DETAILS### TO DISPLAY RECORS FROM DATABASE
+
+<html>
+<body>
+<div style="border:1px solid red;width:200px;height:200px" id="cust">
+</div>
+<br>
+<input type="button" onclick="display()" value="GetDetails"/>
+<script> 
+function display()
+{
+alert();
+var req=new XMLHttpRequest();
+req.open("GET","customer.php",true);
+req.send();
+req.onreadystatechange=function()
+{
+	if(req.readyState==4 && req.status==200)
+	{
+	    alert("inside if");
+		//document.write(req.ResponseText);
+		document.getElementById("cust").innerHTML=req.responseText;
+	}
+}
+
+}
+
+</script>
+</body>
+</html>
+
+                                                                                    ========PHP FOR SAME CODE=======
+
+<?php 
+$con=new mysqli("localhost","root","","master");
+if(!$con)
+{
+	die("Connection failed".mysqli_connect_error());
+	
+	
+}
+$str="select * from customer";
+$result=mysqli_query($con,$str);
+
+
+while($row=mysqli_fetch_array($result))
+{ 
+
+	echo  $row[0].$row[1].$row[2]."<br>";
+	
+}
+mysqli_close($con);
+?>
+        
+                                                                              ###TO INSERT DETAILS FROM DATABASE###
+
+<html>
+<body>
+Empid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="t1"/><br><br>
+EmpName&nbsp;&nbsp;<input type="text" id="t2"/><br><br>
+Department&nbsp;&nbsp;<input type="text" id="t3"/><br><br>
+<h1 id="t4"></h1>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" onclick="insert()" value="InsertDB"/>
+<script>
+function insert()
+{
+alert();
+var empid=document.getElementById("t1").value;
+var empname=document.getElementById("t2").value;
+var Dept=document.getElementById("t3").value;
+var record=[empid,empname,Dept];
+var req=new XMLHttpRequest();
+req.open("GET","empinsert.php?key="+record,true);
+req.send();
+req.onreadystatechange=function()
+{
+ if(req.readyState==4 && req.status==200)
+ {
+	document.getElementById("t4").innerHTML=req.responseText;
+ }
+ 
+}
+}
+</script>
+<body>
+</html>
+                                                                                        ======#PHP OF SAME CODE======
+
+<?php 
+$data=$_REQUEST['key'];
+$URLData=explode(",",$data);
+
+//Creating Database connection
+$con= new mysqli("localhost","root","","master");
+if(!$con)
+{
+		die("Connection Failed".mysqli_connect_error());
+}
+$sql="insert into employee(empid,name,Department)values('$URLData[0]','$URLData[1]','$URLData[2]')";
+if(mysqli_query($con,$sql))
+{
+	echo "Record is inserted";
+}
+?>
+
+                                                                                         ### AJAX FORM ###
+
+
+<html>
+<body>
+<div>
+<form>
+<div style="border:1px solid red;width:200px;height:200px;">
+Choose State <select onchange="myfun(this.value)">
+            <option>Select State</option>
+              <option>Maharashtra</option>
+	      <option>UP</option>
+              <option>Kerla</option>
+               <option>Bihar</option>
+             </select>
+</div><br>
+<div style="border:1px solid green;width:200px;height:200px;">
+Choose City <select  id="city">
+              <option>Selct State</option>
+	      </select>
+
+</div>
+</form >
+<script type="text/javascript">
+function myfun(data)
+{
+alert(data);
+var req=new XMLHttpRequest();
+req.open("GET","http://localhost/My_response.php?datavalue="+data,true);
+req.send();
+	req.onreadystatechange=function()
+	{
+		if(req.readyState==4 && req.status==200)
+		{
+             alert("Inside if");  
+			//document.write(req.responseText);	
+			document.getElementById("city").innerHTML=req.responseText;
+ 			
+		}
+	};
+}
+</script>
+</body>
+</html>
+                  
+                                                                                    ==== PHP OF SAME CODE=======
+====
+<?php 
+$data=$_REQUEST['datavalue'];
+$a=array('Pune','Mumbai','Kolhapur','Shirpur');
+$b=array('Gorakphur','Kanpur','Lucknow');
+$c=array('Patna');
+if($data=="Maharashtra")
+{
+	foreach($a as $aone)
+	{
+		echo"<option>$aone</option>";
+	}
+}
+if($data=="UP")
+{
+	foreach($b as $aone)
+	{
+		echo"<option>$aone</option>";
+	}
+}
+if($data=="Bihar")
+{
+	foreach($c as $aone)
+	{
+		echo"<option>$aone</option>";
+	}
+}
+?>
+
+                                                                                    ### AJAX STUDENT ###
+
+<DOCTYPE html!>
+<html>
+<head>
+<title>C225</title>
+</head>
+<style>
+.form{
+  border-style: groove;
+  height: 400px;
+  width: 300px;
+  padding: 15px 32px;
+  font-size: 20px;
+  border-color:DarkSlateblue;
+  border-size:2px solid;
+  background-color:Gainsboro;
+}
+.button {
+  background-color: DarkSlateblue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+</style>
+<body>
+<center><form class='form' >
+<h2>Course Enrolment</h2>
+Username:<input type='text' id='username'></input><br><br><br>
+Password:<input type='password' id='password'></input><br><br><br>
+Degree:
+<select id='degree' onchange="myfun(this.value)">
+	<option>Select your Degree</option>
+	<option>BTech</option>
+	<option>MBATech</option>
+</select><br><br><br>
+Course:
+<select id='course'>
+	<option>Select your Course</option>
+</select><br><br>
+
+<center><input type='button' value='Submit' class='button' id='submit' onclick='info()'></input></center>
+</form></center>
+
+<script type="text/javascript">
+function myfun(data)
+{
+//alert(data);
+var req=new XMLHttpRequest();
+req.open("GET","http://localhost/student_ajax.php?datavalue="+data,true);
+req.send();
+	req.onreadystatechange=function()
+	{
+		if(req.readyState==4 && req.status==200)
+		{
+            //alert("Inside if");  
+			//document.write(req.responseText);	
+			document.getElementById("course").innerHTML=req.responseText;
+ 			
+		}
+	};
+	
+}
+function info() {
+//alert (working);
+            username = document.getElementById('username').value;
+            degree = document.getElementById('degree').value;
+            course = document.getElementById('course').value;
+            txt = "<h2> The Submitted Data is : </h2><br> username : " + username + "<br>Degree : " + degree + "<br>Course : " + course;
+            document.write(txt);
+}
+</script>
+</body>
+</html>
+
+                                                                                   ========PHP OF SAME CODE=========
+
+<?php
+$data=$_REQUEST['datavalue'];
+$a=array('MachineLearning','DataAnalytics','PythonFundamentals');
+$b=array('WebDevelopment','AdvancePython','DataStructurAndAlgorithm');
+if($data=="BTech")
+{
+	foreach($a as $aone)
+	{
+		echo"<option>$aone</option>";
+	}
+}
+if($data=="MBATech")
+{
+	foreach($b as $aone)
+	{
+		echo"<option>$aone</option>";
+	}
+}
+?>
+
+                                                                              ###AJAX XML TO SEND REQUEST FOR XML FILE ###
+
+<html>
+<p id="title"></p>
+<p id="author"></p>
+<body>
+<script>
+//Code to send request for XML File
+req=new XMLHttpRequest();
+req.open("GET","bookxml.xml",true);
+req.send();
+req.onreadystatechange=function()
+{
+	if(this.readyState==4 && this.status==200)
+	{
+		alert();
+		myfunction(this);
+	}
+};
+function myfunction(xml)
+{
+    alert("inside Fun");
+	//var xmlDoc=xml.responseXML;
+	xmlDoc = xml.responseXML;
+	alert(xmlDoc);
+	var txt1="";
+	var txt2="";
+	alert("1");
+	a=xmlDoc.getElementsByTagName("title");
+	b=xmlDoc.getElementsByTagName("author");
+	for(i=0;i<a.length;i++)
+	{
+		txt1+=a[i].childNodes[0].nodeValue+"<br>";
+	}
+	for(i=0;i<b.length;i++)
+	{
+		txt2+=b[i].childNodes[0].nodeValue+"<br>";
+	}
+	document.getElementById("title").innerHTML=txt1;
+	document.getElementById("author").innerHTML=txt2;
+	
+}
+</script>
+</body>
+</html>
+
+                                                                                     ###AJAX MY BOOK###
+<html>
+<body>
+<p id="title"></p>
+<p id="author"></p>
+<script>
+//Requesting XML File
+req=new XMLHttpRequest();
+req.open("GET","mybook.xml",true);
+req.send();
+req.onreadystatechange=function()
+{
+
+	if(req.readyState==4 && req.status==200)
+	{
+		xmlload(this);
+	}
+}
+function xmlload(xml)
+{
+    alert();
+	xmlDoc=xml.responseXML;
+	alert(xmlDoc);
+	var txt1="";
+	var txt2="";
+	a=xmlDoc.getElementsByTagName("title");
+	b=xmlDoc.getElementsByTagName("author");
+	for(i=0;i<a.length;i++)
+	{
+		txt1+=a[i].childNodes[0].nodeValue+"<br>";
+	}
+	for(i=0;i<b.length;i++)
+	{
+		txt2+=b[i].childNodes[0].nodeValue+"<br>";
+	}
+	document.getElementById("title").innerHTML=txt1;
+	document.getElementById("author").innerHTML=txt2;
+}
+</script>
+</body>
+</html>
+
+                                                                                       ======== MY BOOK XML FILE SOURCE CODE=======
+
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+	<book category="Computer">
+		<title lang="en">Web Programing</title>
+		<title lang="en">SAS</title>
+		<author>Smith</author>
+		<price>30</price>
+		<year>2005</year>
+	</book>
+	<book category="cooking">
+       <title lang="en">Everyday Italian</title>
+       <author>Giada De Laurentiis</author>
+       <year>2005</year>
+       <price>30.00</price>
+	</book>
+	<book category="Mechanical">
+		<title lang="en">Thermo Dynamics</title>
+		<author>Mike</author>
+		<price>50</price>
+		<year>2009</year>
+	</book>
+	<book category="Electronics">
+		<title lang="en">Signal Processing</title>
+		<author>Paul</author>
+		<price>30</price>
+		<year>2007</year>
+	</book>
+	<book category="Information Technology">
+		<title lang="en">Information System</title>
+		<author>Ken</author>
+		<price>50</price>
+		<year>2009</year>
+	</book>
+</bookstore>
+
+
+                                                                               <-----------------UNIT-5---------->
+###NODEJSExpressProgram###
+
+##app.js##
+const express = require('express');
+var bodyParser = require('body-parser')
+var url = require("url");
+
+var mysql = require('mysql');
+var conn=mysql.createConnection({
+host : "localhost",
+user : "root",
+password : "",
+database : "mydb"
+}
+);
+const app = express();
+  
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+    
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+    
+app.post('/', urlencodedParser, (req, res) => {
+	var rollno=req.body.roll_no;
+	var name=req.body.student_name;
+    var sub1=parseInt(req.body.sub1_mark);
+	var sub2=parseInt(req.body.sub2_mark);
+	var sub3=parseInt(req.body.sub3_mark);
+	var op=req.body.operation;
+	var per= (sub1+sub2+sub3)/3;
+    res.writeHead(200, {"Content-Type": "text/html"});
+	
+	if(op=="add")
+	{
+	
+	var queryString="insert into student values('"+rollno+"','"+name+"','"+sub1+"','"+sub2+"','"+sub3+"','"+per+"')";
+conn.query(queryString, function(error,data)
+	{
+if(error)
+{
+throw error;
+}
+else{
+
+console.log("add success");
+res.write("insertion sucess")
+}
+}//end of con.query
+)}// end of if
+
+else if(op=="update")
+{
+	
+	var queryString="update student SET name='"+name+"',sub1="+sub1+",sub2="+sub2+",sub3="+sub3+",per="+per+" where rollno="+rollno;
+conn.query(queryString, function(error,data)
+	{
+if(error)
+{
+throw error;
+}
+else{
+
+console.log("update success");
+res.write("update sucess");
+}
+}
+)
+}
+else if(op=="delete")
+{
+	
+	
+	var queryString="delete from student where rollno="+rollno;
+conn.query(queryString, function(error,data)
+	{
+if(error)
+{
+throw error;
+}
+else{
+
+console.log("delete success");
+res.write("delete sucess");
+}
+}
+)
+}
+else if(op=="show")
+{
+	
+	var reo ='<html><head><title>Display Data</title></head><body><h1>Display Data</h1>{${table}}</body></html>';
+function setResHtml(sql, cb){
+ 
+    conn.query(sql, (err, res, cols)=>{
+      if(err) throw err;
+
+      var table =''; //to store html table
+
+      //create html table with data from res.
+      for(var i=0; i<res.length; i++){
+        table +='<tr><td>'+ (i+1) +'</td><td>'+ res[i].rollno +'</td><td>'+ res[i].name +'</td><td>'+ res[i].sub1 +'</td><td>'+ res[i].sub2 +'</td><td>'+ res[i].sub3 +'</td><td>'+ res[i].per +'</td></tr>';
+      }
+      table ='<table border="1"><tr><th>Sr.</th><th>rollno</th><th>Name</th><th>sub1</th><th>sub2</th><th>sub3</th><th>percentage</th></tr>'+ table +'</table>';
+
+      
+
+      return cb(table);
+    });
+ 
+}
+
+let sql ='SELECT * FROM student';
+setResHtml(sql, resql=>{
+    reo = reo.replace('{${table}}', resql);
+    
+    res.write(reo, 'utf-8');
+});
+}
+conn.end();
+
+});
+
+    
+app.listen(3000);
+
+##select,js###
+const http = require('http');
+const mysql = require('mysql');
+
+const con = mysql.createConnection({
+  host: '127.0.0.1',
+  user: 'root',
+  password: '',
+  database: 'mydb',
+
+});
+
+//html string that will be send to browser
+var webpage ='<html><head><title>Node.js MySQL Select</title></head><body><h1>Node.js MySQL Select</h1>{${table}}</body></html>';
+
+//sets and returns html table with results from sql select
+//Receives sql query and callback function to return the table
+function setResHtml(sql,cb){
+  //con.connect(function(err, con){
+   // if(err) throw err;
+
+    con.query(sql, function(err, res, cols){
+      if(err) throw err;
+
+      var table =''; //to store html table
+
+      //create html table with data from res.
+      for(var i=0; i<res.length; i++){
+        table +='<tr><td>'+ (i+1) +'</td><td>'+ res[i].name +'</td><td>'+ res[i].address +'</td></tr>';
+      }
+      table ='<table border="1"><tr><th>Sr.</th><th>Name</th><th>Address</th></tr>'+ table +'</table>';
+
+     // con.close(); //Done with mysql connection
+
+      return cb(table);
+    });
+  //});
+}
+
+let sql ='SELECT name, address FROM customer';
+let recsql="";
+
+//create the server for browser access
+const server = http.createServer(function(req, res){
+  setResHtml(sql, function(recsql){
+    webpage = webpage.replace('{${table}}', recsql);
+    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    res.write(webpage, 'utf-8');
+    res.end();
+  });
+});
+
+server.listen(3000, function(){
+  console.log('Server running');
+});
+
+##index##
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Node JS and Database connection </title>
+   
+  <body>
+    <div class="container">
+      <h1>Payroll Application Using Node JS And Database connection </h1>
+      <form action="/" method="POST">
+        <div>
+          <label >Employee ID</label>
+          <input type="text"  name="roll_no">
+	</div>
+	<div>
+          <label>Employee Name</label>
+          <input type="text" name="student_name">
+       	</div>
+         <div>
+          <label>Basic Salary</label>
+          <input type="text" name="student_name">
+       	</div>
+	<div>
+          
+         
+
+<div>
+          <label >operation</label>
+          <select name="operation">
+		  <option value="add">Add record</option>
+		  <option value="update">Update record</option>
+		  <option value="delete">Delete record</option>
+		  <option value="show">Display record</option>
+		  </select>
+      </div>	  
+        <button type="submit" >Submit</button>
+      </form>
+  </body>
+</html>
+
+                                                                               <--------UNIT-6 (MONGO DB)------>
+
+###MongCollection.js###
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.createCollection("customers1", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+  });
+});
+
+###MongoDelete.js##
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  /*Delete the first customers with the address "Mountain 21":*/
+  var myquery = { address: 'Mountain 21' };
+  dbo.collection("customers").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    db.close();
+  });
+});
+
+###Mongofind.js##
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.collection("customers").findOne({}, function(err, result) {
+    if (err) throw err;
+    console.log(result.name);
+    db.close();
+  });
+});
+
+###mongoinsert,js###
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = { name: "Company Inc", address: "Highway 37" };
+  dbo.collection("customers").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+});
+
+###Mongoinsert.js###
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = { name: "Company Inc", address: "Highway 37" };
+  dbo.collection("customers").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+});
+
+###Mongoupdate###
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myquery = { address: "Valley 345" };
+  var newvalues = { $set: { name: "Michael", address: "Canyon 123" } };
+  dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log("1 document updated");
+    db.close();
+  });
+});
+
+###NodeJSMongo.js###
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = { name: "Company Inc", address: "Highway 37" };
+  dbo.collection("customers").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+});
+
+
+
