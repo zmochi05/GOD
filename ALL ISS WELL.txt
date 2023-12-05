@@ -1,8 +1,8 @@
                                                                               ***UNIT-1***ANGULARJS***
  ###ANGULAR CHECK BOX###
 
-<!DOCTYPE html>
-<html>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
 
@@ -21,15 +21,13 @@ app.controller("ctrl",function($scope){
 $scope.selected="other";
 });
 </script>
-
-
 </body>
-</html>
+
 
                                                                                    ###ANGULAR FIRST###
 
-<!DOCTYPE html>
-<html>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body ng-app="Myapp" ng-controller="Myctrl">
 <div>
@@ -49,12 +47,12 @@ $scope.name="Suraj"
 });
 </script>
 </body>
-</html>
+
 
 
    ####ANGULAR JS INCOME TAX CALCULATOR####
 
-<!DOCTYPE html>
+
 <html lang="en" ng-app="incomeTaxApp">
 
 <head>
@@ -146,13 +144,11 @@ $scope.name="Suraj"
 
 </body>
 
-</html>
-
-           ###EXP-1=>FORM VALIDATION###
 
 
-<!DOCTYPE html>
-<html>
+                                                               ###EXP-1=>FORM VALIDATION###
+
+
 <head>
   <title>Form Validation</title>
   <script>
@@ -204,16 +200,10 @@ $scope.name="Suraj"
     <input type="submit" value="Submit">
   </form>
 </body>
-</html>
+
 
  ###EXP-2=>angular JS code to change the background color of text box ###
-
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task-1</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
@@ -235,17 +225,11 @@ $scope.name="Suraj"
             });
     </script>
 </body>
-</html>
+
 
  
-   ###EXP-2=>angulAR JS Angular JS Application to designed Navigation MeNu ###
-
-<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-
+                                            ###EXP-2=>angulAR JS Angular JS Application to designed Navigation MeNu ###
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS Navigation Menu</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <style>
@@ -315,35 +299,26 @@ $scope.name="Suraj"
     </script>
 </body>
 
-</html>
+
 
                                                                 ###EXP-2=>angulAR JS angular JS code to implement one way data binding ###
 
-<!DOCTYPE html>
-<html>
+
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
 <body>
-
 <div ng-app="" ng-init="gameName=''">
     <p>Type your favourite game in the given area:</p>
     <p>Game Name: <input type="text" ng-model="gameName"></p>
     <p>Your favourite game is: {{ gameName }}</p>
 </div>
-
 </body>
-</html>
 
                                                                              ###EXP-3=>Shopping Cart application###    
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment-3</title>
+    <title>Shopping cart</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
 <body>
@@ -374,24 +349,18 @@ $scope.name="Suraj"
         });
     </script>
 </body>
-</html>
+
 
                                              ###EXP-3=>AngularJS ng-click directive, whenever user clicks on the button, the count of courses selected is updated###    
 
-<!DOCTYPE html>
 <html lang="en" ng-app="courseApp">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Selection</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
-
 <body ng-controller="courseController">
 
     <h2>Available Courses</h2>
-
     <table>
         <thead>
             <tr>
@@ -441,20 +410,12 @@ $scope.name="Suraj"
             };
         });
     </script>
-
 </body>
-
-</html>
 
                                                ###EXP-4=>The angular JS application should have both state control and CSS validation at both form and input control level###  
 
-
-<!DOCTYPE html>
 <html lang="en" ng-app="studentApp">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration Form</title>
 
     <!-- Include AngularJS -->
@@ -551,13 +512,9 @@ $scope.name="Suraj"
         });
     </script>
 </body>
-
-</html>
-
                                                                         
                                                    ###EXP-5=>custom service using factory to allow user to accept two numbers and performed mathematical operation.###  
 
-<html>
 <head>
   <title>Form Validation</title>
   <script>
@@ -613,10 +570,7 @@ $scope.name="Suraj"
 
 
 <html lang="en" ng-app="demoApp">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTTP GET Demo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <!-- Code injected by live-server -->
@@ -624,11 +578,8 @@ $scope.name="Suraj"
 
      
                                                                               <---------UNIT-2-------> 
-
                                                                                     ###JSON_PHP###
 
-<!DOCTYPE html>
-<html>
 <body>
 
 <h2>Get JSON Data from a PHP Server</h2>
@@ -644,16 +595,11 @@ xmlhttp.onload = function() {
 xmlhttp.open("GET", "demo_array.php");
 xmlhttp.send();
 </script>
-
 </body>
-</html>
+
 
 ###MYJSON_NP###
-<!DOCTYPE html>
-<html>
-
 <body>
-
 <h2>Click the Button.</h2>
 <p>A script tag with a src attribute is created and placed in the document.</p>
 <p>The PHP file returns a call to a function with the JSON object as a parameter.</p>
@@ -674,9 +620,8 @@ alert();
   document.getElementById("demo").innerHTML = myObj.name;
 }
 </script>
-
 </body>
-</html>
+
 
                                                                                          ###PHP_MAIN###
 
@@ -698,7 +643,6 @@ echo $myJSON;
 
                                                                                 ###CUSTOMER DETAILS### TO DISPLAY RECORS FROM DATABASE
 
-<html>
 <body>
 <div style="border:1px solid red;width:200px;height:200px" id="cust">
 </div>
@@ -720,39 +664,30 @@ req.onreadystatechange=function()
 		document.getElementById("cust").innerHTML=req.responseText;
 	}
 }
-
 }
-
 </script>
 </body>
-</html>
 
                                                                                     ========PHP FOR SAME CODE=======
-
 <?php 
 $con=new mysqli("localhost","root","","master");
 if(!$con)
 {
 	die("Connection failed".mysqli_connect_error());
-	
-	
 }
 $str="select * from customer";
 $result=mysqli_query($con,$str);
 
-
 while($row=mysqli_fetch_array($result))
 { 
-
 	echo  $row[0].$row[1].$row[2]."<br>";
-	
 }
 mysqli_close($con);
 ?>
-        
+      
                                                                               ###TO INSERT DETAILS FROM DATABASE###
 
-<html>
+
 <body>
 Empid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="t1"/><br><br>
 EmpName&nbsp;&nbsp;<input type="text" id="t2"/><br><br>
@@ -782,7 +717,7 @@ req.onreadystatechange=function()
 }
 </script>
 <body>
-</html>
+
                                                                                         ======#PHP OF SAME CODE======
 
 <?php 
@@ -805,7 +740,7 @@ if(mysqli_query($con,$sql))
                                                                                          ### AJAX FORM ###
 
 
-<html>
+
 <body>
 <div>
 <form>
@@ -838,14 +773,13 @@ req.send();
 		{
              alert("Inside if");  
 			//document.write(req.responseText);	
-			document.getElementById("city").innerHTML=req.responseText;
- 			
+			document.getElementById("city").innerHTML=req.responseText;	
 		}
 	};
 }
 </script>
 </body>
-</html>
+
                   
                                                                                     ==== PHP OF SAME CODE=======
 ====
@@ -878,9 +812,6 @@ if($data=="Bihar")
 ?>
 
                                                                                     ### AJAX STUDENT ###
-
-<DOCTYPE html!>
-<html>
 <head>
 <title>C225</title>
 </head>
@@ -954,7 +885,6 @@ function info() {
 }
 </script>
 </body>
-</html>
 
                                                                                    ========PHP OF SAME CODE=========
 
@@ -979,8 +909,6 @@ if($data=="MBATech")
 ?>
 
                                                                               ###AJAX XML TO SEND REQUEST FOR XML FILE ###
-
-<html>
 <p id="title"></p>
 <p id="author"></p>
 <body>
@@ -1022,10 +950,8 @@ function myfunction(xml)
 }
 </script>
 </body>
-</html>
-
                                                                                      ###AJAX MY BOOK###
-<html>
+
 <body>
 <p id="title"></p>
 <p id="author"></p>
@@ -1064,7 +990,6 @@ function xmlload(xml)
 }
 </script>
 </body>
-</html>
 
                                                                                        ======== MY BOOK XML FILE SOURCE CODE=======
 
@@ -1102,231 +1027,6 @@ function xmlload(xml)
 		<year>2009</year>
 	</book>
 </bookstore>
-
-
-                                                                               <-----------------UNIT-5---------->
-###NODEJSExpressProgram###
-
-##app.js##
-const express = require('express');
-var bodyParser = require('body-parser')
-var url = require("url");
-
-var mysql = require('mysql');
-var conn=mysql.createConnection({
-host : "localhost",
-user : "root",
-password : "",
-database : "mydb"
-}
-);
-const app = express();
-  
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-    
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-    
-app.post('/', urlencodedParser, (req, res) => {
-	var rollno=req.body.roll_no;
-	var name=req.body.student_name;
-    var sub1=parseInt(req.body.sub1_mark);
-	var sub2=parseInt(req.body.sub2_mark);
-	var sub3=parseInt(req.body.sub3_mark);
-	var op=req.body.operation;
-	var per= (sub1+sub2+sub3)/3;
-    res.writeHead(200, {"Content-Type": "text/html"});
-	
-	if(op=="add")
-	{
-	
-	var queryString="insert into student values('"+rollno+"','"+name+"','"+sub1+"','"+sub2+"','"+sub3+"','"+per+"')";
-conn.query(queryString, function(error,data)
-	{
-if(error)
-{
-throw error;
-}
-else{
-
-console.log("add success");
-res.write("insertion sucess")
-}
-}//end of con.query
-)}// end of if
-
-else if(op=="update")
-{
-	
-	var queryString="update student SET name='"+name+"',sub1="+sub1+",sub2="+sub2+",sub3="+sub3+",per="+per+" where rollno="+rollno;
-conn.query(queryString, function(error,data)
-	{
-if(error)
-{
-throw error;
-}
-else{
-
-console.log("update success");
-res.write("update sucess");
-}
-}
-)
-}
-else if(op=="delete")
-{
-	
-	
-	var queryString="delete from student where rollno="+rollno;
-conn.query(queryString, function(error,data)
-	{
-if(error)
-{
-throw error;
-}
-else{
-
-console.log("delete success");
-res.write("delete sucess");
-}
-}
-)
-}
-else if(op=="show")
-{
-	
-	var reo ='<html><head><title>Display Data</title></head><body><h1>Display Data</h1>{${table}}</body></html>';
-function setResHtml(sql, cb){
- 
-    conn.query(sql, (err, res, cols)=>{
-      if(err) throw err;
-
-      var table =''; //to store html table
-
-      //create html table with data from res.
-      for(var i=0; i<res.length; i++){
-        table +='<tr><td>'+ (i+1) +'</td><td>'+ res[i].rollno +'</td><td>'+ res[i].name +'</td><td>'+ res[i].sub1 +'</td><td>'+ res[i].sub2 +'</td><td>'+ res[i].sub3 +'</td><td>'+ res[i].per +'</td></tr>';
-      }
-      table ='<table border="1"><tr><th>Sr.</th><th>rollno</th><th>Name</th><th>sub1</th><th>sub2</th><th>sub3</th><th>percentage</th></tr>'+ table +'</table>';
-
-      
-
-      return cb(table);
-    });
- 
-}
-
-let sql ='SELECT * FROM student';
-setResHtml(sql, resql=>{
-    reo = reo.replace('{${table}}', resql);
-    
-    res.write(reo, 'utf-8');
-});
-}
-conn.end();
-
-});
-
-    
-app.listen(3000);
-
-##select,js###
-const http = require('http');
-const mysql = require('mysql');
-
-const con = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: '',
-  database: 'mydb',
-
-});
-
-//html string that will be send to browser
-var webpage ='<html><head><title>Node.js MySQL Select</title></head><body><h1>Node.js MySQL Select</h1>{${table}}</body></html>';
-
-//sets and returns html table with results from sql select
-//Receives sql query and callback function to return the table
-function setResHtml(sql,cb){
-  //con.connect(function(err, con){
-   // if(err) throw err;
-
-    con.query(sql, function(err, res, cols){
-      if(err) throw err;
-
-      var table =''; //to store html table
-
-      //create html table with data from res.
-      for(var i=0; i<res.length; i++){
-        table +='<tr><td>'+ (i+1) +'</td><td>'+ res[i].name +'</td><td>'+ res[i].address +'</td></tr>';
-      }
-      table ='<table border="1"><tr><th>Sr.</th><th>Name</th><th>Address</th></tr>'+ table +'</table>';
-
-     // con.close(); //Done with mysql connection
-
-      return cb(table);
-    });
-  //});
-}
-
-let sql ='SELECT name, address FROM customer';
-let recsql="";
-
-//create the server for browser access
-const server = http.createServer(function(req, res){
-  setResHtml(sql, function(recsql){
-    webpage = webpage.replace('{${table}}', recsql);
-    res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    res.write(webpage, 'utf-8');
-    res.end();
-  });
-});
-
-server.listen(3000, function(){
-  console.log('Server running');
-});
-
-##index##
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Node JS and Database connection </title>
-   
-  <body>
-    <div class="container">
-      <h1>Payroll Application Using Node JS And Database connection </h1>
-      <form action="/" method="POST">
-        <div>
-          <label >Employee ID</label>
-          <input type="text"  name="roll_no">
-	</div>
-	<div>
-          <label>Employee Name</label>
-          <input type="text" name="student_name">
-       	</div>
-         <div>
-          <label>Basic Salary</label>
-          <input type="text" name="student_name">
-       	</div>
-	<div>
-          
-         
-
-<div>
-          <label >operation</label>
-          <select name="operation">
-		  <option value="add">Add record</option>
-		  <option value="update">Update record</option>
-		  <option value="delete">Delete record</option>
-		  <option value="show">Display record</option>
-		  </select>
-      </div>	  
-        <button type="submit" >Submit</button>
-      </form>
-  </body>
-</html>
-
                                                                                <--------UNIT-6 (MONGO DB)------>
 
 ###MongCollection.js###
@@ -1431,6 +1131,5 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
-
 
 
